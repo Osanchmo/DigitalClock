@@ -37,7 +37,14 @@ namespace Rellotge
                  time = (Time)deserializer.Deserialize(TestFileStream);
                 TestFileStream.Close();
             }
-            AlarmaHora.Content = time.time;
+            try
+            {
+                AlarmaHora.Content = time.time;
+            }
+            catch
+            {
+                AlarmaHora.Content = "no alarm";
+            }
 
         }
         private void Timer_Tick(object sender, EventArgs e)
